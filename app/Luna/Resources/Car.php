@@ -20,7 +20,7 @@ class Car extends Resource
 
     public function title()
     {
-        return $this->color . ' ' . $this->brand . ' ' . $this->model . ' kterou vlastní ' . Resources::forModel($this->owner)->title();
+        return $this->color . ' ' . $this->brand . ' ' . $this->model;
     }
 
     public function fields()

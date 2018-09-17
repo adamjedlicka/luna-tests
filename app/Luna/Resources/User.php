@@ -6,6 +6,7 @@ use AdamJedlicka\Luna\Resource;
 use AdamJedlicka\Luna\Fields\Id;
 use AdamJedlicka\Luna\Fields\Text;
 use AdamJedlicka\Luna\Fields\HasMany;
+use AdamJedlicka\Luna\Fields\BelongsToMany;
 
 class User extends Resource
 {
@@ -43,6 +44,11 @@ class User extends Resource
             HasMany::make('Posts'),
 
             HasMany::make('Cars', 'garage'),
+
+            BelongsToMany::make('Roles')
+                ->fields([
+                    Text::make('Note'),
+                ]),
         ];
     }
 }

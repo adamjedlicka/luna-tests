@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\User;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 
 class ShowResourceTest extends TestCase
 {
@@ -12,10 +11,7 @@ class ShowResourceTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $response = $this->get(route('resources.show', [
-            'resource' => 'User',
-            'resourceKey' => $user->getKey(),
-        ]));
+        $response = $this->resourceDetail($user);
 
         $response->assertJsonFragment([
             'value' => $user->getKey(),
@@ -27,10 +23,7 @@ class ShowResourceTest extends TestCase
         $user1 = factory(User::class)->create();
         $user2 = factory(User::class)->create();
 
-        $response = $this->get(route('resources.show', [
-            'resource' => 'User',
-            'resourceKey' => $user1->getKey(),
-        ]));
+        $response = $this->resourceDetail($user1);
 
         $response->assertJsonFragment([
             'value' => $user1->getKey(),
